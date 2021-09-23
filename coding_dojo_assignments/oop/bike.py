@@ -7,7 +7,7 @@ class Bike:
     def __repr__(self):
         return f"This bike costs ${self.price}."
     
-    def displayInfo(self):
+    def display_info(self):
         print()
         print(f"Price:     {self.price}")
         print(f"Max speed: {self.max_speed}")
@@ -29,10 +29,10 @@ bike1.ride(20)      # miles: 30
 bike1.ride()        # miles: 40
 bike1.reverse()     # miles: 35
 bike1.ride(7)       # miles: 42
-bike1.displayInfo()
+bike1.display_info()
 
 bike2 = Bike(175, 40)
-bike2.ride().ride().ride().ride().reverse(2).displayInfo()  # miles: 38
+bike2.ride().ride().ride().ride().reverse(2).display_info()  # miles: 38
 
 # testing __repr__ function:
 print(bike1)

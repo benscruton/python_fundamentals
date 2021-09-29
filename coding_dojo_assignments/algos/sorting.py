@@ -29,22 +29,27 @@ def bubble_sort(l):
                 completed = False
                 l[i], l[i+1] = l[i+1], l[i]
 
-def weird_bad_sort(l):
+def selection_sort(l):
     for i in range(len(l) - 1):
+        mindex = i
         for j in range(i, len(l)):
-            if l[i] > l[j]:
-                l[i], l[j] = l[j], l[i]
+            if l[mindex] > l[j]:
+                mindex = j
+        l[i], l[mindex] = l[mindex], l[i]
+
+
+            
     
 test = gen_list(100)
-print(check_sorted(test))
+print(test)
 print()
 bubble_sort(test)
-print(check_sorted(test))
+print(test)
 
 sep()
 
 test = gen_list(100)
-print(check_sorted(test))
+print(test)
 print()
-weird_bad_sort(test)
-print(check_sorted(test))
+selection_sort(test)
+print(test)

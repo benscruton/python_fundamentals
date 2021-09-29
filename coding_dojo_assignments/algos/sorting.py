@@ -3,6 +3,12 @@ def sep(length = 30):
     print("*" * length)
     print()
 
+def check_sorted(l):
+    for i in range(len(l) - 1):
+        if l[i] > l[i+1]:
+            return False
+    return True
+
 def gen_list(length = 20, maximum = 100, minimum = 0):
     import random
     import math
@@ -30,15 +36,15 @@ def weird_bad_sort(l):
                 l[i], l[j] = l[j], l[i]
     
 test = gen_list(100)
-print(test)
+print(check_sorted(test))
 print()
 bubble_sort(test)
-print(test)
+print(check_sorted(test))
 
 sep()
 
 test = gen_list(100)
-print(test)
+print(check_sorted(test))
 print()
 weird_bad_sort(test)
-print(test)
+print(check_sorted(test))

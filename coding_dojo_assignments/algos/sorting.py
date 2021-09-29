@@ -37,19 +37,36 @@ def selection_sort(l):
                 mindex = j
         l[i], l[mindex] = l[mindex], l[i]
 
+def insertion_sort(l):
+    for i in range(1, len(l)):
+        belongs = i
+        while belongs > 0 and l[i] < l[belongs - 1]:
+            belongs -= 1
+        while i != belongs:
+            l[i], l[i-1] = l[i-1], l[i]
+            i -= 1
+        
 
+    
             
     
+# test = gen_list(100)
+# print(test)
+# print()
+# bubble_sort(test)
+# print(test)
+
+# sep()
+
+# test = gen_list(100)
+# print(test)
+# print()
+# selection_sort(test)
+# print(test)
+
 test = gen_list(100)
 print(test)
-print()
-bubble_sort(test)
-print(test)
-
 sep()
-
-test = gen_list(100)
+insertion_sort(test)
 print(test)
-print()
-selection_sort(test)
-print(test)
+print(check_sorted(test))

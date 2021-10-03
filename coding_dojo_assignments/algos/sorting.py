@@ -89,6 +89,34 @@ def merge_sort(arr):
     return output
 
 
+
+
+def partition_array(arr):
+    pivot = arr[-1]
+    i = j = 0
+    while i < len(arr):
+        if arr[i] <= pivot:
+            arr[i], arr[j] = arr[j], arr[i]
+            j += 1
+        i += 1
+    return j - 1
+
+first = gen_list()
+second = gen_list()
+third = gen_list()
+fourth = gen_list()
+fifth = gen_list()
+
+arrs = [first, second, third, fourth, fifth]
+
+for arr in arrs:
+    print(arr)
+    print(partition_array(arr))
+    print(arr)
+    sep()
+
+
+
     
 # test = gen_list(100)
 # print(test)
@@ -112,16 +140,16 @@ def merge_sort(arr):
 # print(check_sorted(test))
 
 
-test = gen_list(100)
-test2 = [*test]
-print(test)
-sep()
-test = merge_sort(test)
-print(test)
-bubble_sort(test2)
-print(test2)
-print(test == test2)
-print(check_sorted(test))
+# test = gen_list(100)
+# test2 = [*test]
+# print(test)
+# sep()
+# test = merge_sort(test)
+# print(test)
+# bubble_sort(test2)
+# print(test2)
+# print(test == test2)
+# print(check_sorted(test))
 
 # mTest = gen_list(5000)
 # bTest = [*mTest]

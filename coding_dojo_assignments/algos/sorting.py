@@ -101,19 +101,22 @@ def partition_array(arr):
         i += 1
     return j - 1
 
-first = gen_list()
-second = gen_list()
-third = gen_list()
-fourth = gen_list()
-fifth = gen_list()
+def quick_sort(arr):
+    if len(arr) < 2:
+        return arr
+    j = partition_array(arr)
+    left = quick_sort(arr[:j])
+    right = quick_sort(arr[j:])
+    return [*left, *right]
 
-arrs = [first, second, third, fourth, fifth]
-
-for arr in arrs:
-    print(arr)
-    print(partition_array(arr))
-    print(arr)
-    sep()
+x = gen_list()
+y = [*x]
+print(x)
+x = quick_sort(x)
+bubble_sort(y)
+print(x)
+print(y)
+print("Matches" if x == y else "Does not match")
 
 
 

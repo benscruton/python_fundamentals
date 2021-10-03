@@ -57,11 +57,6 @@ def insertion_sort(arr):
             j -= 1
     return arr
 
-
-x = gen_list(1000)
-insertion_sort(x)
-print(check_sorted(x))
-
 def combine_arrays(arr1, arr2):
     output = []
     while len(arr1) and len(arr2):
@@ -75,14 +70,23 @@ def combine_arrays(arr1, arr2):
         output.append(arr2.pop(0))
     return output
 
-
 def merge_sort(arr):
     if len(arr) < 2:
         return arr
     mid = len(arr) // 2
     left = merge_sort(arr[:mid])
     right = merge_sort(arr[mid:])
-    return combine_arrays(left, right)
+    output = []
+    while len(left) and len(right):
+        if left[0] < right[0]:
+            output.append(left.pop(0))
+        else:
+            output.append(right.pop(0))
+    while len(left):
+        output.append(left.pop(0))
+    while len(right):
+        output.append(right.pop(0))
+    return output
 
 
     
@@ -108,21 +112,22 @@ def merge_sort(arr):
 # print(check_sorted(test))
 
 
-# test = gen_list(100)
-# test2 = [*test]
-# print(test)
-# sep()
-# test = merge_sort(test)
-# print(test)
-# bubble_sort(test2)
-# print(test2)
-# print(test == test2)
+test = gen_list(100)
+test2 = [*test]
+print(test)
+sep()
+test = merge_sort(test)
+print(test)
+bubble_sort(test2)
+print(test2)
+print(test == test2)
+print(check_sorted(test))
 
-mTest = gen_list(5000)
-bTest = [*mTest]
-wiTest = [*mTest]
-iTest = [*mTest]
-sTest = [*mTest]
+# mTest = gen_list(5000)
+# bTest = [*mTest]
+# wiTest = [*mTest]
+# iTest = [*mTest]
+# sTest = [*mTest]
 
 # mStart = datetime.datetime.now()
 # mTest = merge_sort(mTest)
@@ -134,15 +139,15 @@ sTest = [*mTest]
 # bEnd = datetime.datetime.now()
 # print(f"Bubble sort took {(bEnd - bStart).microseconds / 1000} ms.")
 
-iStart = datetime.datetime.now()
-insertion_sort(iTest)
-iEnd = datetime.datetime.now()
-print(f"Insertion sort took {(iEnd - iStart).microseconds / 1000} ms.")
+# iStart = datetime.datetime.now()
+# insertion_sort(iTest)
+# iEnd = datetime.datetime.now()
+# print(f"Insertion sort took {(iEnd - iStart).microseconds / 1000} ms.")
 
-wiStart = datetime.datetime.now()
-worse_insertion_sort(wiTest)
-wiEnd = datetime.datetime.now()
-print(f"Worse insertion sort took {(wiEnd - wiStart).microseconds / 1000} ms.")
+# wiStart = datetime.datetime.now()
+# worse_insertion_sort(wiTest)
+# wiEnd = datetime.datetime.now()
+# print(f"Worse insertion sort took {(wiEnd - wiStart).microseconds / 1000} ms.")
 
 
 # sStart = datetime.datetime.now()

@@ -1,3 +1,39 @@
+def get_horiz_separator(position):
+    first = {
+        "top": "┌",
+        "middle": "├",
+        "bottom": "└"
+    }
+    center = {
+        "top": "┬",
+        "middle": "┼",
+        "bottom": "┴"
+    }
+    last = {
+        "top": "┐",
+        "middle": "┤",
+        "bottom": "┘"
+    }
+    horiz_separator = first[position]
+    horiz_separator += "─" * 7 + center[position]
+    horiz_separator += "─" * 7 + center[position]
+    horiz_separator += "─" * 7 + last[position]
+    return horiz_separator
+
+def print_board(board):
+    print("\n" + get_horiz_separator("top"))
+    for i in range(9):
+        row = "│"
+        for j in range(9):
+            row += " " + board[i][j]
+            if j % 3 == 2 and j < 8:
+                row += " │"
+        row += " │"
+        print(row)
+        if i % 3 == 2 and i < 8:
+            print(get_horiz_separator("middle"))
+    print(get_horiz_separator("bottom") + "\n")
+
 def check_board_at_spot(board, i, j):
     here = board[i][j]
     if here == ".":
@@ -30,16 +66,6 @@ def check_board_at_spot(board, i, j):
             return False
     
     return True
-
-# def make_progress(board):
-#     possible = [True] * 9
-#     possible.insert(0, "placeholder")
-
-#     progress_made = True
-
-#     while progress_made:
-#         progress_made = False
-#         for i in range(9):
 
 
 def get_horiz_separator(position):
@@ -77,19 +103,31 @@ def advance_iterators(i, j):
 
 
 
-def print_board(board):
-    print("\n" + get_horiz_separator("top"))
-    for i in range(9):
-        row = "│"
-        for j in range(9):
-            row += " " + board[i][j]
-            if j % 3 == 2 and j < 8:
-                row += " │"
-        row += " │"
-        print(row)
-        if i % 3 == 2 and i < 8:
-            print(get_horiz_separator("middle"))
-    print(get_horiz_separator("bottom") + "\n")
+
+
+
+
+def make_progress(board):
+    possible = [True] * 9
+    possible.insert(0, "placeholder")
+
+    progress_made = True
+
+    while progress_made:
+        progress_made = False
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] == ".":
+                    possible_here = [*possible]
+                    for k in range(9):
+                        # check row:
+                        if board[i][k] != ".":
+                            possible_here[int(board[i][k])] = False
+                        # check column:
+                        if board[k][j] != ".":
+                            possible_here[int(board[k][j])] = False
+                        # check square
+                        
 
 
 def backtrack(board, i = 0, j = 0):
